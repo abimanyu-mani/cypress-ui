@@ -1,0 +1,21 @@
+stages:
+  - build
+  - test
+
+# 1️⃣ BUILD STAGE
+build:
+  stage: build
+  image: cypress/base:22.0.0 # includes Node 22 + Chrome + OS deps for Cypress
+  script:
+    - echo "Installing the dependencies..."
+    - npm ci
+
+# 2️⃣ TEST STAGE
+test:
+  stage: test
+  image: cypress/base:22.0.0
+  script:
+    - echo "Running Cypress tests..."
+    - npm run test:all
+  dependencies:
+    - build

@@ -1,21 +1,30 @@
 stages:
-  - build
+  - install
   - test
 
-# 1️⃣ BUILD STAGE
-build:
-  stage: build
-  image: cypress/base:22.0.0 # includes Node 22 + Chrome + OS deps for Cypress
-  script:
-    - echo "Installing the dependencies..."
-    - npm install
-
-# 2️⃣ TEST STAGE
-test:
-  stage: test
+# 1️⃣ INSTALL DEPENDENCIES
+install:
+  stage: install
   image: cypress/base:22.0.0
   script:
-    - echo "Running Cypress tests..."
-    - npm run test:all
+    - echo "Installing dependencies..."
+    - npm ci
+  artifacts:
+    paths:
+      - node_modules/  # save dependencies for next stage
+    expire_in: 15m
+
+# 2️⃣ RUN TESTS
+run-tests:
+  stage: test
+  image: cypress/base:22.0.0
   dependencies:
-    - build
+    - install        # fetch node_modules from install stage
+  script:
+    - echo "Running all Cypress tests..."
+    - npm run test:all
+  artifacts:
+    when: always
+    paths:
+      - cypress/screenshots
+      - cypress/videos

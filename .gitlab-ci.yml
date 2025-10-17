@@ -1,5 +1,9 @@
+stages:
+  - test
+
 run-tests:
   stage: test
-  image: cypress/included:17.3.0
+  image: cypress/included:9.6.1
   script:
-    - cypress run --spec 'cypress/e2e/tests/**/*.cy.js'
+    - echo "Running all Cypress tests..."
+    - cypress run --browser chrome --headless --spec 'cypress/e2e/tests/**/*.cy.js'

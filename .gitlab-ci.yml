@@ -2,7 +2,6 @@ stages:
   - test
 
 variables:
-  # Cypress stores binary under this path inside container
   CYPRESS_CACHE_FOLDER: /root/.cache/Cypress
 
 cache:
@@ -17,4 +16,6 @@ run-cypress-tests:
     - echo "Installing Cypress binary..."
     - npx cypress install
     - echo "Running Cypress tests..."
-    - npx cypress run --headless --spec 'cypress/e2e/tests/**/*.cy.js'
+    # Use bash explicitly to avoid shell misinterpretation
+    - |
+      bash -c "npx cypress run --headless --browser chrome --spec 'cypress/e2e/tests/**/*.cy.js'"

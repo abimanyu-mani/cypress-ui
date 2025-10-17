@@ -3,7 +3,7 @@ stages:
 
 run-tests:
   stage: test
-  image: cypress/included:9.6.1
+  image: cypress/included:12.12.0
   script:
-    - echo "Running all Cypress tests..."
-    - cypress run --browser chrome --headless --spec 'cypress/e2e/tests/**/*.cy.js'
+    - echo "Running Cypress tests with Electron headless..."
+    - cypress run --spec 'cypress/e2e/tests/**/*.cy.js'

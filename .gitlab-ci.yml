@@ -6,4 +6,4 @@ run-tests:
   image: cypress/included:15.4.0
   script:
     - echo "Running all Cypress tests..."
-    - npx cypress run --browser chrome --headless --spec 'cypress/e2e/tests/**/*.cy.js'
+    - cypress run --browser chrome --headless --spec 'cypress/e2e/tests/**/*.cy.js'

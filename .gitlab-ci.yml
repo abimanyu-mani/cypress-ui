@@ -13,9 +13,7 @@ run-cypress-tests:
   stage: test
   image: cypress/included:12.12.0
   script:
-    - echo "Installing Cypress binary..."
+    - echo "✅ Installing Cypress binary..."
     - npx cypress install
-    - echo "Running Cypress tests..."
-    # Use bash explicitly to avoid shell misinterpretation
-    - |
-      bash -c "npx cypress run --headless --browser chrome --spec 'cypress/e2e/tests/**/*.cy.js'"
+    - echo "🚀 Running Cypress tests..."
+    - bash -c "npx cypress run --headless --browser chrome --spec 'cypress/e2e/tests/**/*.cy.js'"

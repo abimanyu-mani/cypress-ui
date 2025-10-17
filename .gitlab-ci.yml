@@ -2,24 +2,25 @@ stages:
   - install
   - test
 
-# 1️⃣ INSTALL DEPENDENCIES
 install:
   stage: install
   image: cypress/base:22.0.0
   script:
     - echo "Installing dependencies..."
     - npm ci
+    - echo "Installing Cypress binary..."
+    - npx cypress install   # <--- ensures binary is downloaded
   artifacts:
     paths:
-      - node_modules/  # save dependencies for next stage
-    expire_in: 15m
+      - node_modules/
+      - ~/.cache/Cypress/   # <--- cache the binary for next stage
+    expire_in: 1h
 
-# 2️⃣ RUN TESTS
 run-tests:
   stage: test
   image: cypress/base:22.0.0
   dependencies:
-    - install        # fetch node_modules from install stage
+    - install
   script:
     - echo "Running all Cypress tests..."
     - npm run test:all

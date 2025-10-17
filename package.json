@@ -174,7 +174,7 @@
     "test": "npx cypress run",
     "test:headed": "npx cypress run --headed",
     "test:chrome": "npx cypress run --browser chrome",
-    "test:all": "npx cypress run --headed --browser chrome --spec 'cypress/e2e/tests/**/*.cy.js'"
+    "test:all": "npx cypress run --browser chrome --spec 'cypress/e2e/tests/**/*.cy.js'"
   },
   "repository": {
     "type": "git",

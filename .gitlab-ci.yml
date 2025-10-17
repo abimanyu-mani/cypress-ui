@@ -1,9 +1,7 @@
-stages:
-  - test
-
 run-tests:
   stage: test
-  image: cypress/included:15.4.0
+  image: cypress/included:17.3.0
+  tags:
+    - docker
   script:
-    - echo "Running all Cypress tests..."
     - cypress run --browser chrome --headless --spec 'cypress/e2e/tests/**/*.cy.js'

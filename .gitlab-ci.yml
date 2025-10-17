@@ -7,8 +7,3 @@ run-tests:
   script:
     - echo "Running all Cypress tests..."
     - npx cypress run --browser chrome --spec 'cypress/e2e/tests/**/*.cy.js'
-  artifacts:
-    when: always
-    paths:
-      - cypress/screenshots
-      - cypress/videos

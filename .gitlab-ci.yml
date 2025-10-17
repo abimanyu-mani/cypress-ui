@@ -1,9 +1,5 @@
-stages:
-  - test
-
 run-tests:
   stage: test
   image: cypress/included:12.12.0
   script:
-    - echo "Running Cypress tests with Electron headless..."
     - cypress run --spec 'cypress/e2e/tests/**/*.cy.js'

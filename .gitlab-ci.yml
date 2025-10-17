@@ -2,13 +2,13 @@ stages:
   - test
 
 variables:
-  # Ensures Cypress binary is downloaded in project directory and cached
-  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/.cache/Cypress"
+  # Cypress stores binary under this path inside container
+  CYPRESS_CACHE_FOLDER: /root/.cache/Cypress
 
 cache:
   key: cypress-cache
   paths:
-    - .cache/Cypress
+    - /root/.cache/Cypress
 
 run-cypress-tests:
   stage: test

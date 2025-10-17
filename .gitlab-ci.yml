@@ -8,7 +8,7 @@ build:
   image: cypress/base:22.0.0 # includes Node 22 + Chrome + OS deps for Cypress
   script:
     - echo "Installing the dependencies..."
-    - npm ci
+    - npm install
 
 # 2️⃣ TEST STAGE
 test:

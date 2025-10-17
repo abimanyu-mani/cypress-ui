@@ -7,9 +7,3 @@ run-tests:
   script:
     - npm ci
     - npm run test:all
-  artifacts:
-    when: always
-    paths:
-      - cypress/screenshots
-      - cypress/videos
-  

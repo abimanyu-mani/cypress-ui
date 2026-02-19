@@ -3,9 +3,10 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl : 'https://www.saucedemo.com/',
+    specPattern: 'cypress/e2e/tests/**/*.cy.js',
+    baseUrl: 'http://localhost:3000', // optional
     setupNodeEvents(on, config) {
-      // mochawesome(on);
+      // implement node event listeners here
     },
   },
   // reporter: 'cypress-mochawesome-reporter',
